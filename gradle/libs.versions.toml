@@ -1,0 +1,14 @@
+[versions]
+kotlin = "1.9.23"
+spring-boot = "3.2.4"
+spring-sftp = "6.2.2"
+[libraries]
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+spring-boot-starter-sftp = { module = "org.springframework.integration:spring-integration-sftp", version.ref = "spring-sftp" }
+
+[bundles]
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-noarg = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "kotlin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
