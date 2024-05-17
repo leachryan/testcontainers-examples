@@ -13,11 +13,11 @@ class CockroachDbContainer : GenericContainer<CockroachDbContainer>(DockerImageN
     fun createDatabase(databaseName: String) {
         if (!isRunning) throw RuntimeException("container is not yet running")
 
-        val result = execInContainer("/cockroach/cockroach", "sql", "--insecure", "-e", "create database if not exists $databaseName;")
+        val result = execInContainer("/cockroach/cockroach", "sql", "--insecure", "-e", "create database if not exists ${databaseName};")
         if (result.exitCode != 0) {
             throw RuntimeException("error creating database: $databaseName")
         }
     }
 
-    fun jdbcUrl(databaseName: String): String = "jdbc::postgresql://$host:${getMappedPort(26257)}/$databaseName?sslmode=disable"
+    fun jdbcUrl(databaseName: String): String = "jdbc:postgresql://$host:${getMappedPort(26257)}/${databaseName}?sslmode=disable"
 }
